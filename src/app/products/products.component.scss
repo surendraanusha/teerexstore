@@ -1,0 +1,144 @@
+.outer-container{
+  background-color: rgb(241, 239, 239);
+  .inner-container{ 
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+}
+.product-img{
+  width: 120px;
+  border-radius: 10px;
+  height: 100px;
+}
+.example-card {
+  border-radius: 10px;
+  max-width: 400px;
+  min-height: 200px;
+  background-color: rgb(255, 255, 255);
+}
+.products-container{
+  width: 70%;
+}
+.form-container{
+  width: 20%;
+}
+.value{
+    color: #616e7c;
+    font-family: "Roboto";
+    font-size: 16px;
+    margin-top: 0;
+    margin-left: 8px;
+    margin-bottom: 0;
+}
+.card-title{
+  color: #3e4c59;
+  font-family: "Roboto";
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px !important;
+}
+.lable{
+  color: #171f46;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.search-input{
+  width: 350px;
+  margin-right: 5px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  outline: none;
+  border-bottom-width:1px;
+  border-color: #616e7c;
+}
+.search-button{
+  margin-right: 7px;
+}
+.p-title{
+color: rgb(4, 42, 69);
+font-size: 16px;
+font-family: sans-serif;
+font-weight: 700;
+}
+.category-title{
+color: rgb(4, 42, 69);
+font-size: 18px;
+font-family: sans-serif;
+font-weight: 700;
+}
+.bottom{
+display: flex;
+justify-content: space-between;
+align-items:center;
+}
+.price-value{
+color: rgb(4, 42, 69);
+font-size: 16px;
+font-weight: 700;
+font-family: sans-serif;
+}
+.brand{
+color: rgb(24, 24, 23);
+font-size: 16px;
+font-family: sans-serif;
+.brand-child{
+  color: rgb(8, 29, 52);
+  font-size: 16px;
+  font-weight: 700;
+ font-family: sans-serif;
+
+}
+}
+@media screen  and (max-width:576px){
+  .form-container{
+    display: none;
+  }
+  .products-container{
+    width: 100%;
+    padding: 0px !important;
+  }
+  .search-input{
+    width: 190px;
+  }
+}
+@media screen and (min-width:768px) {
+  .form-container{
+    width: 32%;
+  }
+  .products-container{
+    width: 68%;
+  }
+  .lable{
+    font-size: 18px;
+  }
+  .value{
+    font-size: 18px;
+  }
+}
+@media screen and (min-width:1024px) {
+  .form-container{
+    width: 25%;
+  }
+  .products-container{
+    width: 75%;
+  }
+}
+@media screen and (min-width:1440px) {
+  .form-container{
+    width: 20%;
+  }
+  .products-container{
+    width: 80%;
+  }
+}
+.categoreys{
+  padding-left: 10px;
+}
+.checkbox{
+  margin-right: 4px;
+}

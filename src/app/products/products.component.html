@@ -1,0 +1,261 @@
+<!-- <div class="entire-container">
+  <div class="products-container">
+    <form class="form-container">
+      <div class="form-child-container">
+        <div class="form-inner-container">
+          <h1 class="category">Color</h1>
+          <div class="parent-container">
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="red" />
+              <label for="red" class="checkbox-element">Red</label>
+            </div>
+
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="Blue" />
+              <label for="Blue" class="checkbox-element">Blue</label>
+            </div>
+
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="Green" />
+              <label for="Green" class="checkbox-element">Green</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-inner-container">
+          <h1 class="category">Gender</h1>
+          <div class="parent-container">
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="men" />
+              <label for="men" class="checkbox-element">Men</label>
+            </div>
+
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="women" />
+              <label for="women" class="checkbox-element">Women</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-inner-container">
+          <h1 class="category">Price</h1>
+          <div class="parent-container">
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="primary-range" />
+              <label for="primary-range" class="checkbox-element">0-250</label>
+            </div>
+
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="secondary-range" />
+              <label for="secondary-range" class="checkbox-element"
+                >251-450</label
+              >
+            </div>
+
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="super-range" />
+              <label for="super-range" class="checkbox-element">451</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-inner-container">
+          <h1 class="category">Type</h1>
+          <div class="parent-container">
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="polo" />
+              <label for="polo" class="checkbox-element">Polo</label>
+            </div>
+
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="hoodie" />
+              <label for="hoodie" class="checkbox-element">Hoodie</label>
+            </div>
+
+            <div class="each-checkbox-container">
+              <input type="checkbox" id="basic" />
+              <label for="basic" class="checkbox-element">Basic</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buttons-container">
+        <button mat-raised-button color="primary">Apply Filters</button>
+        <button mat-raised-button color="warn">Clear Filters</button>
+      </div>
+    </form>
+    <div class="right-container">
+      right-side-container-start
+      <div class="search-container">
+        <input
+          type="search"
+          placeholder="Search for Products..."
+          class="user-input"
+        />
+        <button type="button" class="search-button">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+      <ul class="products">
+        <li *ngFor="let eachProduct of productsArray" class="each-product-card">
+          <img
+            src="{{ eachProduct.imageURL }}"
+            alt="t-shirt"
+            class="product-image"
+          />
+          <p class="InStock" *ngIf="eachProduct.quantity != 0">InStock</p>
+          <p class="outOfStock" *ngIf="eachProduct.quantity == 0">OutOfStock</p>
+          <div class="text-container">
+            <h1 class="primary">{{ eachProduct.name }}</h1>
+            <p class="secondary">
+              Brand : <span class="brand">{{ eachProduct.type }}</span>
+            </p>
+          </div>
+
+          <div class="price-button">
+            <p class="price">Rs {{ eachProduct.price }}/-</p>
+            
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="addToCartItem(eachProduct,eachProduct.id)"
+            >
+              {{buttonText}}
+            </button>
+            
+          </div>
+        </li>
+      </ul>
+      right-side-container-end
+    </div>
+  </div>
+</div> 
+-->
+<div class="outer-container">
+	<div class="container inner-container">
+		<div class="d-flex justify-content-md-center">
+			<input
+			  type="search"
+			  placeholder="Search for Products..."
+			  class="p-2 search-input"
+			/>
+			<button type="button" class="btn btn-outline-warning d-flex justify-content-center align-items-center search-button">
+			  <mat-icon>search</mat-icon>
+			</button>
+			<button class="d-block d-md-none btn btn-outline-success d-flex justify-content-center align-items-center">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
+					<path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+				  </svg>
+			</button>
+		  </div>
+	</div>
+	
+  <div class="container inner-container d-flex">
+		<div class="form-container p-3">
+			<form class="bg-warning  rounded-2 p-2">
+				<div class="categoreys">
+					<div class="mb-2">
+						<h1 class="category-title">Color</h1>
+						<div>
+							<div class="d-flex align-items-center">
+								<input type="checkbox" id="red" class="checkbox"/>
+								<label for="red">Red</label>
+							</div>
+							<div class="d-flex align-items-center">
+								<input type="checkbox" id="Blue" class="checkbox"/>
+								<label for="Blue" class="checkbox-element">Blue</label>
+							</div>
+							<div class="d-flex align-items-center">
+								<input type="checkbox" id="Green" class="checkbox"/>
+								<label for="Green" class="checkbox-element">Green</label>
+							</div>
+						</div>
+					</div>
+					<div class="mb-2">
+						<h1 class="category-title">Gender</h1>
+						<div class="parent-container">
+							<div class="d-flex align-items-center">
+								<input type="checkbox" id="men" class="checkbox"/>
+								<label for="men" class="checkbox-element">Men</label>
+							</div>
+							<div class="d-flex align-items-center">
+								<input type="checkbox" id="women" class="checkbox"/>
+								<label for="women" class="checkbox-element">Women</label>
+							</div>
+						</div>
+					</div>
+					<div class="mb-2">
+					<h1 class="category-title">Price</h1>
+					<div class="parent-container">
+						<div class="d-flex align-items-center">
+						<input type="checkbox" id="primary-range" class="checkbox"/>
+						<label for="primary-range" class="checkbox-element">0-250</label>
+						</div>
+			
+						<div class="d-flex align-items-center">
+						<input type="checkbox" id="secondary-range" class="checkbox"/>
+						<label for="secondary-range" class="checkbox-element"
+							>251-450</label
+						>
+						</div>
+			
+						<div class="d-flex align-items-center">
+						<input type="checkbox" id="super-range" class="checkbox"/>
+						<label for="super-range" class="checkbox-element">451</label>
+						</div>
+					</div>
+					</div>
+					<div class="mb-2">
+					<h1 class="category-title">Type</h1>
+					<div class="parent-container">
+						<div class="d-flex align-items-center">
+						<input type="checkbox" id="polo" class="checkbox"/>
+						<label for="polo" class="checkbox-element">Polo</label>
+						</div>
+			
+						<div class="d-flex align-items-center">
+						<input type="checkbox" id="hoodie" class="checkbox"/>
+						<label for="hoodie" class="checkbox-element">Hoodie</label>
+						</div>
+			
+						<div class="d-flex align-items-center">
+						<input type="checkbox" id="basic" class="checkbox"/>
+						<label for="basic" class="checkbox-element">Basic</label>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="d-flex justify-content-between">
+					<button mat-raised-button color="primary">Apply Filters</button>
+					<button mat-raised-button color="warn">Clear Filters</button>
+				</div>
+			</form>
+		</div>
+		<div class="products-container p-3">
+			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+				<ng-container *ngFor="let product of productsArray">
+					<div class="col">
+						<div class="card h-100">
+							<img src="{{product.imageURL}}" alt="product" class="card-img-top">
+							<div class="card-body">
+								<div class="d-flex justify-content-between align-items-center mb-1">
+									<span class="price-value">{{product.price | currency:product.currency | slice:0:4}}</span>
+									<h1 class="p-title">{{product.name}}</h1>
+								</div>
+								<div class="d-flex flex-column mb-1">
+									<div class="d-flex align-items-center mb-2">
+										<p class="lable">Brand:</p>
+										<p class="value">{{product.type}}</p>
+									</div>
+									<div class="d-flex align-items-center">
+										<p class="lable">Available:</p>
+										<p class="value">InStock</p>
+									</div>
+								</div>
+								<button class="btn btn-primary mt-2" (click)="addtocart(product)">Add to cart</button>
+							</div>
+						</div>
+					</div>
+				</ng-container>
+			</div>
+		</div>
+	</div>
+</div>
+
