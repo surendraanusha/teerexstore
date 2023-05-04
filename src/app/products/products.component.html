@@ -1,136 +1,6 @@
-<!-- <div class="entire-container">
-  <div class="products-container">
-    <form class="form-container">
-      <div class="form-child-container">
-        <div class="form-inner-container">
-          <h1 class="category">Color</h1>
-          <div class="parent-container">
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="red" />
-              <label for="red" class="checkbox-element">Red</label>
-            </div>
-
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="Blue" />
-              <label for="Blue" class="checkbox-element">Blue</label>
-            </div>
-
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="Green" />
-              <label for="Green" class="checkbox-element">Green</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-inner-container">
-          <h1 class="category">Gender</h1>
-          <div class="parent-container">
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="men" />
-              <label for="men" class="checkbox-element">Men</label>
-            </div>
-
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="women" />
-              <label for="women" class="checkbox-element">Women</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-inner-container">
-          <h1 class="category">Price</h1>
-          <div class="parent-container">
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="primary-range" />
-              <label for="primary-range" class="checkbox-element">0-250</label>
-            </div>
-
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="secondary-range" />
-              <label for="secondary-range" class="checkbox-element"
-                >251-450</label
-              >
-            </div>
-
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="super-range" />
-              <label for="super-range" class="checkbox-element">451</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-inner-container">
-          <h1 class="category">Type</h1>
-          <div class="parent-container">
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="polo" />
-              <label for="polo" class="checkbox-element">Polo</label>
-            </div>
-
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="hoodie" />
-              <label for="hoodie" class="checkbox-element">Hoodie</label>
-            </div>
-
-            <div class="each-checkbox-container">
-              <input type="checkbox" id="basic" />
-              <label for="basic" class="checkbox-element">Basic</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="buttons-container">
-        <button mat-raised-button color="primary">Apply Filters</button>
-        <button mat-raised-button color="warn">Clear Filters</button>
-      </div>
-    </form>
-    <div class="right-container">
-      right-side-container-start
-      <div class="search-container">
-        <input
-          type="search"
-          placeholder="Search for Products..."
-          class="user-input"
-        />
-        <button type="button" class="search-button">
-          <mat-icon>search</mat-icon>
-        </button>
-      </div>
-      <ul class="products">
-        <li *ngFor="let eachProduct of productsArray" class="each-product-card">
-          <img
-            src="{{ eachProduct.imageURL }}"
-            alt="t-shirt"
-            class="product-image"
-          />
-          <p class="InStock" *ngIf="eachProduct.quantity != 0">InStock</p>
-          <p class="outOfStock" *ngIf="eachProduct.quantity == 0">OutOfStock</p>
-          <div class="text-container">
-            <h1 class="primary">{{ eachProduct.name }}</h1>
-            <p class="secondary">
-              Brand : <span class="brand">{{ eachProduct.type }}</span>
-            </p>
-          </div>
-
-          <div class="price-button">
-            <p class="price">Rs {{ eachProduct.price }}/-</p>
-            
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="addToCartItem(eachProduct,eachProduct.id)"
-            >
-              {{buttonText}}
-            </button>
-            
-          </div>
-        </li>
-      </ul>
-      right-side-container-end
-    </div>
-  </div>
-</div> 
--->
 <div class="outer-container">
 	<div class="container inner-container">
-		<div class="d-flex justify-content-md-center">
+		<div class="d-flex justify-content-sm-between justify-content-md-center">
 			<input
 			  type="search"
 			  placeholder="Search for Products..."
@@ -148,7 +18,7 @@
 	</div>
 	
   <div class="container inner-container d-flex">
-		<div class="form-container p-3">
+		<div class="form-container pt-3">
 			<form class="bg-warning  rounded-2 p-2">
 				<div class="categoreys">
 					<div class="mb-2">
@@ -232,8 +102,10 @@
 			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
 				<ng-container *ngFor="let product of productsArray">
 					<div class="col">
-						<div class="card h-100">
-							<img src="{{product.imageURL}}" alt="product" class="card-img-top">
+						<div class="card h-100 d-flex flex-column justify-content-between">
+							<div  class="card-img-top">
+								<img src="{{product.imageURL}}" alt="product" class="h-100 w-100">
+							</div>
 							<div class="card-body">
 								<div class="d-flex justify-content-between align-items-center mb-1">
 									<span class="price-value">{{product.price | currency:product.currency | slice:0:4}}</span>
@@ -246,10 +118,18 @@
 									</div>
 									<div class="d-flex align-items-center">
 										<p class="lable">Available:</p>
-										<p class="value">InStock</p>
+										<p class="value">{{product.quantity === 0 ? 'OutofStock':'InStock'}}</p>
 									</div>
 								</div>
-								<button class="btn btn-primary mt-2" (click)="addtocart(product)">Add to cart</button>
+								<div *ngIf="product.quantity === 0; then thenBlock else elseBlock"> 
+									This content is not shown here bcz i am using thenblock
+								</div>
+								<ng-template #thenBlock>
+									<button class="btn btn-primary mt-2 disabled" (click)="addtocart(product)">Add to cart</button>
+								</ng-template>
+								<ng-template #elseBlock>
+									<button class="btn btn-primary mt-2" (click)="addtocart(product)">Add to cart</button>
+								</ng-template>
 							</div>
 						</div>
 					</div>

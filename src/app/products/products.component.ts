@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit {
     
   }
   addtocart(product:any){
-    console.log("product info===========>",product)
+    // console.log("product info===========>",product)
     let payload={
       id:product.id,
       image:product.imageURL,
@@ -33,17 +33,25 @@ export class ProductsComponent implements OnInit {
       price:product.price,
       quantity:this.defaultQuantity
     }
-    console.log("new obj=========>",payload)
+    // console.log("new obj=========>",payload)
 
     	let productObject = this._productService.cartItems.find(
-			(eachCartItem:any) => eachCartItem.id === payload.id,
-		)
+			(eachCartItem:any) => eachCartItem.id === payload.id)
+
+    //  this.productsArray = this.productsArray.filter((eachObj:any)=>(
+    //   eachObj.id === product.id
+    // ))
+      let index = (this.productsArray.findIndex((eachObj:any)=>(
+        eachObj.id === product.id
+      )))
+      // console.log(this.productsArray[index].quantity)
+      // console.log(...this.productsArray)
 
 		if (productObject) {
 			this._productService.cartItems.map((eachItem:any) => {
 				if (productObject.id === eachItem.id) {
-					let updatedQuantity = eachItem.quantity + payload.quantity
-					productObject.quantity = updatedQuantity;
+					productObject.quantity = eachItem.quantity + payload.quantity;
+          productObject.price = (eachItem.quantity)*payload.price;
 				}
 			})
 		}
@@ -51,46 +59,4 @@ export class ProductsComponent implements OnInit {
 			this._productService.cartItems.push(payload)
 		}
   }
-  // addToCartItem(product: any,id:any){
-  //   console.log("product ids==========>",product,id)
-  //   // // this.productsArray.filter((eachItem:any)=>{
-  //   // //       if(eachItem.id === id){
-  //   // //         if(product.quantity > 0){
-  //   // //           let result = product.quantity - 1
-  //   // //           product.quantity = result;
-  //   // //           console.log(product.quantity)
-  //   // //         }  
-  //   // //       }
-  //   // //     })
-  // }
-
-  // addToCart(productDetails: any, defaultQuantity: number): void {
-	// 	let payload = {
-	// 		id: productDetails.id,
-	// 		image: productDetails.image_url,
-	// 		title: productDetails.title,
-	// 		brand: productDetails.brand,
-	// 		price: productDetails.price,
-	// 		quantity: defaultQuantity
-	// 	}
-
-	// 	let productObject = this._allProductService.cartItems.find(
-	// 		eachCartItem => eachCartItem.id === payload.id,
-	// 	)
-
-	// 	if (productObject) {
-	// 		this._allProductService.cartItems.map(eachItem => {
-	// 			if (productObject.id === eachItem.id) {
-	// 				let updatedQuantity = eachItem.quantity + payload.quantity
-	// 				productObject.quantity = updatedQuantity;
-	// 			}
-	// 		})
-	// 	}
-	// 	else {
-	// 		this._allProductService.cartItems.push(payload)
-	// 	}
-
-
-	// }
-
 }
